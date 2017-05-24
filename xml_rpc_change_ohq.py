@@ -9,7 +9,7 @@ password = 'a'
 user_input = 'Y'
 # print 'lal alal a'
 while user_input != 'N':
-    user_input = raw_input(
+    user_input = input(
         "Enter internal reference of the product:")
     product_ids = server.execute(database, 1, password, 'product.product',
                                  'search', [('default_code', '=', user_input)])
@@ -23,7 +23,7 @@ while user_input != 'N':
             database, 1, password, 'stock.location', 'search',
             [('name', '=', 'Stock')])
         new_updated_quantity = int(
-            raw_input("Enter the new on hand quantity:"))
+            input("Enter the new on hand quantity:"))
 
         new_OHQTY = 0
         if product_quant_ids:
@@ -69,4 +69,3 @@ while user_input != 'N':
             server.execute(database, 1, password, 'product.product',
                            'write', product_ids[0], {
                                'standard_price': final_average_cost})
-print "The script is ended"
